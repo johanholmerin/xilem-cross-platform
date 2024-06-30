@@ -1,0 +1,31 @@
+[package]
+name = "xilem_example_mobile"
+# Version is required by `cargo-apk`, though this value will never change.
+version = "0.0.0"
+edition = "2021"
+description = "Example for building xilem on mobile and desktop"
+publish = false
+license = "MIT OR Apache-2.0"
+
+[lib]
+name = "xilem_example_mobile"
+crate-type = ["staticlib", "cdylib", "lib"]
+
+[dependencies]
+xilem_example_app = { path = "../app" }
+winit.workspace = true
+pollster = "0.3.0"
+
+[package.metadata.android]
+package = "org.xilem.example"
+apk_name = "xilemexample"
+# This strips debug symbols from the shared libraries, drastically reducing APK
+# size. If you need them, remove the option.
+strip = "strip"
+build_targets = ["aarch64-linux-android", "armv7-linux-androideabi"]
+
+[package.metadata.android.sdk]
+target_sdk_version = 31
+
+[package.metadata.android.application]
+label = "xilem example"

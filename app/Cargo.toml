@@ -1,0 +1,10 @@
+[package]
+name = "xilem_example_app"
+edition.workspace = true
+
+[dependencies]
+pollster = "0.3.0"
+winit = { version = "0.30.3", features = ["android-native-activity"] }
+# iOS support is not released yet, requires 1daf711
+masonry = { git = "https://github.com/linebender/xilem.git", rev = "1daf711" }
+xilem = { git = "https://github.com/linebender/xilem.git", rev = "1daf711" }
